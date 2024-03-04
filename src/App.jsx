@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <h1>Hola a todos</h1>
+        <h1 className="text-3xl font-semibold">Hola a todos</h1>
         <Routes>
           <Route path="/" element={<Students />} />
         </Routes>
