@@ -11,7 +11,7 @@ function Students() {
   const [students, saveStudents] = useState([]);
   const ConsultarAPI = async () => {
     const StudentsCheck = await ClienteAxios.get("/estudiantes");
-    //COLOCAR STATE
+
     saveStudents(StudentsCheck.data);
     console.log(students);
   };

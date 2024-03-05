@@ -1,5 +1,4 @@
 import "./../../index.css";
-// import logo from "./../../assets/isologo.png";
 import { Link } from "react-router-dom";
 import { Fragment } from "react";
 
@@ -30,7 +29,7 @@ function Sidebar() {
 
           <li className="mt-2 mb-2">
             <Link
-              to={""}
+              to={"/prestamos"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
             >
               <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">
@@ -42,7 +41,7 @@ function Sidebar() {
 
           <li className="mt-2 mb-2">
             <Link
-              to={""}
+              to={"/catalogo"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
             >
               <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">
@@ -54,7 +53,7 @@ function Sidebar() {
 
           <li className="mt-2 mb-2">
             <Link
-              to={""}
+              to={"/estadisticas"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
             >
               <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">
