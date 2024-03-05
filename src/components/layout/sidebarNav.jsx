@@ -15,7 +15,7 @@ function Sidebar() {
               width={88}
             />
           </div>
-          <li className="mb-2">
+          <ul className="mb-2">
             <Link
               to={"/inicio"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-bbPrimaryTwo"
@@ -25,9 +25,9 @@ function Sidebar() {
               </span>
               <span class=" text-xl font-medium font">Inicio</span>
             </Link>
-          </li>
+          </ul>
 
-          <li className="mt-2 mb-2">
+          <ul className="mt-2 mb-2">
             <Link
               to={"/prestamos"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
@@ -37,9 +37,9 @@ function Sidebar() {
               </span>
               <span class=" text-xl font-medium font">Préstamos</span>
             </Link>
-          </li>
+          </ul>
 
-          <li className="mt-2 mb-2">
+          <ul className="mt-2 mb-2">
             <Link
               to={"/catalogo"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
@@ -49,9 +49,9 @@ function Sidebar() {
               </span>
               <span class=" text-xl font-medium font">Catálogo</span>
             </Link>
-          </li>
+          </ul>
 
-          <li className="mt-2 mb-2">
+          <ul className="mt-2 mb-2">
             <Link
               to={"/estadisticas"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
@@ -61,9 +61,9 @@ function Sidebar() {
               </span>
               <span class=" text-xl font-medium font">Estadísticas</span>
             </Link>
-          </li>
+          </ul>
 
-          <li className="mt-2 mb-2">
+          <ul className="mt-2 mb-2">
             <Link
               to={"/estudiantes"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
@@ -73,7 +73,7 @@ function Sidebar() {
               </span>
               <span class=" text-xl font-medium font">Cuentas</span>
             </Link>
-          </li>
+          </ul>
         </div>
       </div>
     </Fragment>
