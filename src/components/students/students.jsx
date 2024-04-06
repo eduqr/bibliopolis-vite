@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import Sidebar from "../layout/sidebarNav";
 import { Card } from "@material-tailwind/react";
 import "./../../index.css";
+import {ButtonEdit, ButtonDelete, ButtonAdd, Label, Input} from '../ui' ;
+
 
 const TABLE_HEAD = ["Nombre", "Apellido", "Correo", "Carrera", "Acciones" ];
 
@@ -39,10 +41,15 @@ function Students() {
       <Sidebar />
       
       <Card className="w-2/3 overflow-scroll m-auto">
-      <h1 className="text-3xl font-semibold text-left py-5 mb-5">Gestion de Cuentas</h1>
-
+        
+      <div className="flex justify-between items-center">
+  <h1 className="text-3xl font-semibold text-left py-5 mb-5">Gestion de Cuentas</h1>
+  <ButtonAdd to={"#"}>Nuevo alumno</ButtonAdd>
+</div>
 
         <table className="w-2/3 min-w-max table-auto text-left">
+       
+
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
@@ -54,7 +61,9 @@ function Students() {
                 </th>
               ))}
             </tr>
+       
           </thead>
+          
           <tbody>
           {students.map(({ name, lastname, email, career_id }, index) => (
 
@@ -67,9 +76,8 @@ function Students() {
                 <td className="p-4">{email}</td>
                 <td className="p-4" >{getCareerNameById(career_id)}</td>
                 <td className="p-4" >
-                  <Link to={"#"} className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Editar</Link>
-               
-                  <Link to={"#"} className="m-10 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Eliminar</Link>
+                  <ButtonEdit to={"#"}>Editar</ButtonEdit>   
+                  <ButtonDelete to={"#"}>Eliminar</ButtonDelete>            
                 </td>
               </tr>
             ))}
