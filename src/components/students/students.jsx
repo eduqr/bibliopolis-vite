@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
 import ClienteAxios from "../../config/axios";
-import { Link } from "react-router-dom";
 import Sidebar from "../layout/sidebarNav";
 import { Card } from "@material-tailwind/react";
 import "./../../index.css";
@@ -44,7 +43,7 @@ function Students() {
         
       <div className="flex justify-between items-center">
   <h1 className="text-3xl font-semibold text-left py-5 mb-5">Gestion de Cuentas</h1>
-  <ButtonAdd to={"#"}>Nuevo alumno</ButtonAdd>
+  <ButtonAdd to={"/formularioEstudiante"}>Nuevo alumno</ButtonAdd>
 </div>
 
         <table className="w-2/3 min-w-max table-auto text-left">

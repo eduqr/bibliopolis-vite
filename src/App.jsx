@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Students from "./components/students/students";
+import StudentForm from "./components/students/studentForm";
 import Login from "./components/login/login";
 import Home from "./components/layout/home";
 import Loans from "./components/loans/loans";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/catalogo" element={<Catalog />} />
           <Route path="/estadisticas" element={<Stats />} />
           <Route path="/estudiantes" element={<Students />} />
+          <Route path="/formularioEstudiante" element={<StudentForm />} />
         </Routes>
       </Fragment>
     </Router>
