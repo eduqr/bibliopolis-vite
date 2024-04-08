@@ -35,6 +35,19 @@ function Students() {
     return career ? career.name : "N/A"; 
   };
 
+  const deleteAlumno = async (id) => {
+    try {
+      const confirmacion = window.confirm("¿Estás seguro de que deseas eliminar este estudiante con matricula "+ "'" + id + "'"+ "?");
+      if (confirmacion) {
+        const response = await ClienteAxios.delete("/estudiantes/" + id);
+        alert("Estudiante Eliminado");
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <Fragment>
       <Sidebar />
@@ -43,7 +56,7 @@ function Students() {
         
       <div className="flex justify-between items-center">
   <h1 className="text-3xl font-semibold text-left py-5 mb-5">Gestion de Cuentas</h1>
-  <ButtonAdd to={"/formularioEstudiante"}>Nuevo alumno</ButtonAdd>
+  <ButtonAdd to={"/nuevoEstudiante"}>Nuevo alumno</ButtonAdd>
 </div>
 
         <table className="w-2/3 min-w-max table-auto text-left">
@@ -64,7 +77,7 @@ function Students() {
           </thead>
           
           <tbody>
-          {students.map(({ name, lastname, email, career_id }, index) => (
+          {students.map(({id, name, lastname, email, career_id }, index) => (
 
           
 
@@ -75,8 +88,8 @@ function Students() {
                 <td className="p-4">{email}</td>
                 <td className="p-4" >{getCareerNameById(career_id)}</td>
                 <td className="p-4" >
-                  <ButtonEdit to={"#"}>Editar</ButtonEdit>   
-                  <ButtonDelete to={"#"}>Eliminar</ButtonDelete>            
+                  <ButtonEdit to={"/editarEstudiante/"+ id}>Editar</ButtonEdit>   
+                  <ButtonDelete onClick={() => deleteAlumno(id)}>Eliminar</ButtonDelete>            
                 </td>
               </tr>
             ))}
