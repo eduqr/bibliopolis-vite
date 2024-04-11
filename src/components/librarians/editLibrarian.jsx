@@ -7,57 +7,57 @@ import { useParams } from "react-router-dom";
 
 
 
-function EditStudent() {
+function EditLibrarian() {
     let params = useParams();
     console.log(params.id)
 
-    const [carreras, guardarCarrera] = useState([]);
+    const [roles, guardarRoles] = useState([]);
 
-    const [alumno, guardarEditarAlumno] = useState({
+    const [bibliotecario, guardarEditarBibliotecario] = useState({
         id: params.id,
         name: "",
         lastname: "",
         email: "",
-        career_id: "",     
+        rol_id: "",     
        
       });
 
-      const validarAlumno = () => {
-        const { name, lastname, email } = alumno;
+      const validarBibliotecario = () => {
+        const { name, lastname, email } = bibliotecario;
         let valido =
           !name.length || !lastname.length || !email.length ;
         return valido;
       };
   
       const ConsultarAPI = async () => {
-        const CarreraConsulta = await ClienteAxios.get("/carreras");
-        const AlumnoConsulta = await ClienteAxios.get("/estudiantes/" + params.id + "");
+        const RolesConsulta = await ClienteAxios.get("/roles");
+        const BibliotecarioConsulta = await ClienteAxios.get("/bibliotecarios/" + params.id + "");
 
-        guardarCarrera(CarreraConsulta.data);
+        guardarRoles(RolesConsulta.data);
     
-        guardarEditarAlumno(AlumnoConsulta.data);
+        guardarEditarBibliotecario(BibliotecarioConsulta.data);
       };
       useEffect(() => {
         ConsultarAPI();
       }, []);
     
       const actualizarState = (e) => {
-        guardarEditarAlumno({
-          ...alumno,
+        guardarEditarBibliotecario({
+          ...bibliotecario,
           [e.target.name]: e.target.value,
         });
       };
       
-      const ModificarAlumno = (e) => {
+      const ModificarBibliotecario = (e) => {
         e.preventDefault();
-        ClienteAxios.patch("/estudiantes/"+params.id+"", {
-          name: alumno.name,
-          lastname: alumno.lastname,
-          email: alumno.email,
-          career_id: alumno.career_id
+        ClienteAxios.patch("/bibliotecarios/"+params.id+"", {
+          name: bibliotecario.name,
+          lastname: bibliotecario.lastname,
+          email: bibliotecario.email,
+          rol_id: bibliotecario.rol_id
         }).then((res) => {
           console.log(res);
-          guardarMensaje("Alumno Modificado");
+          guardarMensaje("Bibliotecario Modificado");
           setTimeout(() => {
             guardarMensaje(null);
           }, 3000);
@@ -73,7 +73,7 @@ function EditStudent() {
       <Fragment>
         <Sidebar />
         <div className="ml-52 p-6">
-          <h1 className="text-2xl font-bold mb-8">Editar Estudiante</h1>
+          <h1 className="text-2xl font-bold mb-8">Editar Bibliotecario</h1>
   
             
             {mensaje && (
@@ -82,28 +82,28 @@ function EditStudent() {
             </div>
           )}
           
-          <form className="flex flex-row space-x-6" onSubmit={ModificarAlumno}>
+          <form className="flex flex-row space-x-6" onSubmit={ModificarBibliotecario}>
             <div className="flex-1">
               <div className="space-y-4">
   
               <div className="flex flex-col mb-4">
-                  <Label>Matricula:</Label>
-                  <Input type="text" name="id" value={alumno.id} readOnly placeholder="ej. 202200530" onChange={actualizarState} />
+                  <Label>Id:</Label>
+                  <Input type="text" name="id" value={bibliotecario.id} readOnly placeholder="ej. 202200530" onChange={actualizarState} />
                  
                 </div>
   
                 <div className="flex flex-col mb-4">
                   <Label >Nombre:</Label>
-                  <Input type="text" name="name" value={alumno.name}  placeholder="Adrian" onChange={actualizarState} />
-                  {alumno.name.length === 0 && (
+                  <Input type="text" name="name" value={bibliotecario.name}  placeholder="Adrian" onChange={actualizarState} />
+                  {bibliotecario.name.length === 0 && (
                   <span className="text-red-500">El nombre es obligatorio</span>
                 )}
                 </div>
   
                 <div className="flex flex-col mb-4">
                   <Label>Apellido:</Label>
-                  <Input type="text" name="lastname" value={alumno.lastname}  placeholder="Valdez" onChange={actualizarState} />
-                  {alumno.lastname.length === 0 && (
+                  <Input type="text" name="lastname" value={bibliotecario.lastname}  placeholder="Valdez" onChange={actualizarState} />
+                  {bibliotecario.lastname.length === 0 && (
                   <span className="text-red-500">El apellido es obligatorio</span>
                 )}
                 </div>
@@ -115,18 +115,18 @@ function EditStudent() {
               <div className="space-y-4">
                 <div className="flex flex-col mb-4">
                   <Label >Correo:</Label>
-                  <Input type="email" name="email" value={alumno.email}  placeholder="correo@gmail.com" onChange={actualizarState} />
-                  {alumno.email.length === 0 && (
+                  <Input type="email" name="email" value={bibliotecario.email}  placeholder="correo@gmail.com" onChange={actualizarState} />
+                  {bibliotecario.email.length === 0 && (
                   <span className="text-red-500">El correo es obligatorio</span>
                 )}
                 </div>
   
                 <div className="flex flex-col mb-4">
-                  <Label>Carrera:</Label>
+                  <Label>Rol:</Label>
                   <select name="career_id" className="border border-gray-300 rounded-md px-3 py-2" onChange={actualizarState}>
-                    <option value=""  disabled>Selecciona una carrera</option>
-                    {carreras.map(career => (
-                      <option key={career.id} selected={career.id === alumno.career_id} value={career.id}>{career.name}</option>
+                    <option value=""  disabled>Seleccione un rol</option>
+                    {roles.map(rol => (
+                      <option key={rol.id} selected={rol.id === bibliotecario.rol_id} value={rol.id}>{rol.name}</option>
                     ))}
                   </select>
                  
@@ -138,8 +138,8 @@ function EditStudent() {
                                     font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-16 dark:bg-orange-600
                                    dark:hover:bg-orange-700 dark:focus:ring-orange-800 "  
                           type="submit"      
-                          disabled={validarAlumno()}
-                          value="Guardar Estudiante"
+                          disabled={validarBibliotecario()}
+                          value="Guardar Bibliotecario"
                   />
                 
                 
@@ -151,4 +151,4 @@ function EditStudent() {
     );
   }
   
-  export default EditStudent;
+  export default EditLibrarian;

@@ -111,7 +111,7 @@ function login() {
               </div>
 
               <div>
-                <Button to={"/inicio"}>
+                <Button to={"/bibliotecarios"}>
                   Iniciar sesión
                 </Button>
               </div>

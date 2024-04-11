@@ -4,7 +4,9 @@ import Students from "./components/students/students";
 import NewStudent from "./components/students/newStudent";
 import EditStudent from "./components/students/editStudent";
 import Login from "./components/login/login";
-import Home from "./components/layout/home";
+import Librarians from "./components/librarians/librarians";
+import NewLibrarian from "./components/librarians/newLibrarian";
+import EditLibrarian from "./components/librarians/editLibrarian";
 import Loans from "./components/loans/loans";
 import Catalog from "./components/catalog/catalog";
 import Stats from "./components/stats/stats";
@@ -16,7 +18,9 @@ function App() {
       <Fragment>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/inicio" element={<Home />} />
+          <Route path="/bibliotecarios" element={<Librarians />} />
+          <Route path="/nuevoBibliotecario" element={<NewLibrarian />} />
+          <Route path="/editarBibliotecario/:id" element={<EditLibrarian />} />
           <Route path="/prestamos" element={<Loans />} />
           <Route path="/catalogo" element={<Catalog />} />
           <Route path="/estadisticas" element={<Stats />} />

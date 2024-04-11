@@ -17,7 +17,7 @@ function Sidebar() {
           </div>
           <ul className="mb-2">
             <Link
-              to={"/inicio"}
+              to={"/bibliotecarios"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-bbPrimaryTwo"
             >
               <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">

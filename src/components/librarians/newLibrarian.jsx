@@ -5,61 +5,59 @@ import Sidebar from "../layout/sidebarNav";
 import {ButtonEdit, ButtonDelete, ButtonAdd, Label, Input} from '../ui' ;
 
 
-function NewStudent() {
+function NewLibrarian() {
 
-  const [carreras, guardarCarreras] = useState([]);
+  const [roles, guardarRoles] = useState([]);
 
   const consultarAPI = async () => {
-    const carreraConsulta = await ClienteAxios.get("/carreras");
-    guardarCarreras(carreraConsulta.data);
+    const rolesConsulta = await ClienteAxios.get("/roles");
+    guardarRoles(rolesConsulta.data);
   };
 
   useEffect(() => {
     consultarAPI();
   }, []);
 
-  const [alumno, guardarAlumno] = useState({
-    
+  const [bibliotecario, guardarBibliotecario] = useState({ 
     id: "",
     name: "",
     lastname: "",
     email: "",
-    career_id: ""
+    rol_id: ""
   });
 
   const actualizarState = (e) => {
-    guardarAlumno({
-      ...alumno,
+    guardarBibliotecario({
+      ...bibliotecario,
       [e.target.name]: e.target.value,
     });
   };
 
-  const validarAlumno = () => {
-    const { id, name, lastname, email } = alumno;
-    return !id.length || !name.length || !lastname.length || !email.length ;
+  const validarBibliotecario = () => {
+    const {  name, lastname, email } = bibliotecario;
+    return  !name.length || !lastname.length || !email.length ;
   };
 
   const [mensaje, guardarMensaje] = useState(null);
 
 
 
-  const agregarAlumno = (e) => {
+  const agregarBibliotecario = (e) => {
     e.preventDefault();
-    ClienteAxios.post("/estudiantes", alumno).then((res) => {
+    ClienteAxios.post("/bibliotecarios", bibliotecario).then((res) => {
       console.log(res);
-      guardarMensaje("Estudiante agregado correctamente"); 
+      guardarMensaje("Bibliotecario agregado correctamente"); 
       setTimeout(() => {
         guardarMensaje(null);
       }, 3000);
     });
   };
 
-
   return (
     <Fragment>
       <Sidebar />
       <div className="ml-52 p-6">
-        <h1 className="text-2xl font-bold mb-8">Nuevo Estudiante</h1>
+        <h1 className="text-2xl font-bold mb-8">Nuevo Bibliotecario</h1>
 
           
           {mensaje && (
@@ -68,22 +66,16 @@ function NewStudent() {
           </div>
         )}
         
-        <form className="flex flex-row space-x-6" onSubmit={agregarAlumno}>
+        <form className="flex flex-row space-x-6" onSubmit={agregarBibliotecario}>
           <div className="flex-1">
             <div className="space-y-4">
 
-            <div className="flex flex-col mb-4">
-                <Label>Matricula:</Label>
-                <Input type="text" name="id"  placeholder="ej. 202200530" onChange={actualizarState} />
-                {alumno.id.length === 0 && (
-                  <span className="text-red-500">La matrícula es obligatoria</span>
-                )}
-              </div>
+         
 
               <div className="flex flex-col mb-4">
                 <Label >Nombre:</Label>
                 <Input type="text" name="name"  placeholder="Adrian" onChange={actualizarState} />
-                {alumno.name.length === 0 && (
+                {bibliotecario.name.length === 0 && (
                   <span className="text-red-500">El nombre es obligatorio</span>
                 )}
               </div>
@@ -91,7 +83,7 @@ function NewStudent() {
               <div className="flex flex-col mb-4">
                 <Label>Apellido:</Label>
                 <Input type="text" name="lastname"  placeholder="Valdez" onChange={actualizarState} />
-                {alumno.lastname.length === 0 && (
+                {bibliotecario.lastname.length === 0 && (
                   <span className="text-red-500">El apellido es obligatorio</span>
                 )}
               </div>
@@ -104,17 +96,17 @@ function NewStudent() {
               <div className="flex flex-col mb-4">
                 <Label >Correo:</Label>
                 <Input type="email" name="email"  placeholder="correo@gmail.com" onChange={actualizarState} />
-                {alumno.email.length === 0 && (
+                {bibliotecario.email.length === 0 && (
                   <span className="text-red-500">El correo es obligatorio</span>
                 )}
               </div>
 
               <div className="flex flex-col mb-4">
-                <Label>Carrera:</Label>
-                <select name="career_id" className="border border-gray-300 rounded-md px-3 py-2" onChange={actualizarState}>
-                  <option value="" selected disabled>Selecciona una carrera</option>
-                  {carreras.map(career => (
-                    <option key={career.id} value={career.id}>{career.name}</option>
+                <Label>Rol:</Label>
+                <select name="rol_id" className="border border-gray-300 rounded-md px-3 py-2" onChange={actualizarState}>
+                  <option value="" selected disabled>Seleccione un rol</option>
+                  {roles.map(rol => (
+                    <option key={rol.id} value={rol.id}>{rol.name}</option>
                   ))}
                 </select>
                 
@@ -125,8 +117,8 @@ function NewStudent() {
                                   font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-16 dark:bg-orange-600
                                  dark:hover:bg-orange-700 dark:focus:ring-orange-800 "  
                         type="submit"      
-                        disabled={validarAlumno()}
-                        value="Agregar Estudiante"
+                        disabled={validarBibliotecario()}
+                        value="Agregar Bibliotecario"
                 />
               
               
@@ -138,4 +130,4 @@ function NewStudent() {
   );
 }
 
-export default NewStudent;
+export default NewLibrarian;
