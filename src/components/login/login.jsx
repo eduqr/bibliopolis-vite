@@ -65,7 +65,7 @@ function login() {
           </Slider>
         </div>
 
-        <div className="sm:px-10 mt-10 pt-10 pb-8 selection:shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg bg-gray-50 w-full relative flex-col  px-6 py-12 lg:px-8  m-auto">
+        <div className="sm:px-10 mt-5 pt-10 pb-8 selection:shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg bg-gray-50 w-full relative flex-col  px-6 py-12 lg:px-8  m-auto">
           <div className="sm:mx-auto sm:w-1/2 sm:max-w-sm">
             <img
               className="mx-auto h-30 w-auto"
