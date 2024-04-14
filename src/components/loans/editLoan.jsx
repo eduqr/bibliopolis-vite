@@ -27,9 +27,9 @@ function EditLoan() {
 
     const obtenerPrestamosActivos = async (studentId) => {
       try {
-        const response = await ClienteAxios.get("/prestamos/" + studentId + "");
-        const prestamosActivos = response.data.filter(loans => loans.status === 'active');
-        return prestamosActivos.length;
+        const prestamosActivosResponse = await ClienteAxios.get("/prestamosActivos/" + studentId + "");
+        const numeroPrestamosActivos = prestamosActivosResponse.data.prestamos_activos;
+        return numeroPrestamosActivos;
       } catch (error) {
         console.error('Error al obtener los préstamos activos', error);
         return 0;
@@ -107,7 +107,7 @@ function EditLoan() {
             
         const prestamosActivos = await obtenerPrestamosActivos(loan.student_id);
       
-        if (loan.status === 'active' && prestamosActivos >= 3) {
+        if (prestamosActivos >= 3 && loan.status === 'active') {
           guardarMensajeError("El estudiante ya tiene tres préstamos activos.");
           return;
     
