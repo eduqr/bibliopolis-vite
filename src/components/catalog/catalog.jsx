@@ -70,7 +70,7 @@ function Catalog() {
               placeholder="Buscar por título o autor..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="form-input w-full mb-4 mt-4 px-2 py-1 border-2 border-gray-300"
+              className="form-input w-full mb-4 mt-4 px-2 py-1 border-2 rounded-lg border-gray-300"
             />
 
             <div className=" text-right mr-16 mt-8">

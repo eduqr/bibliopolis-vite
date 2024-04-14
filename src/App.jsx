@@ -8,6 +8,8 @@ import Librarians from "./components/librarians/librarians";
 import NewLibrarian from "./components/librarians/newLibrarian";
 import EditLibrarian from "./components/librarians/editLibrarian";
 import Loans from "./components/loans/loans";
+import NewLoan from "./components/loans/newLoan";
+import EditLoan from "./components/loans/editLoan";
 import Catalog from "./components/catalog/catalog";
 import NewBook from "./components/catalog/newBook";
 import EditBook from "./components/catalog/editBook";
@@ -25,6 +27,8 @@ function App() {
           <Route path="/nuevoBibliotecario" element={<NewLibrarian />} />
           <Route path="/editarBibliotecario/:id" element={<EditLibrarian />} />
           <Route path="/prestamos" element={<Loans />} />
+          <Route path="/nuevoPrestamo" element={<NewLoan />} />
+          <Route path="/editarPrestamo/:id" element={<EditLoan />} />
           <Route path="/catalogo" element={<Catalog />} />
           <Route path="/nuevoLibro" element={<NewBook />} />
           <Route path="/editarLibro/:id" element={<EditBook />} />
