@@ -13,6 +13,8 @@ function Students() {
   
   const [students, saveStudents] = useState([]);
   const [careers, saveCareers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Estado para el término de búsqueda
+
 
   const ConsultarAPI = async () => {
     try {
@@ -58,6 +60,7 @@ function Students() {
   <h1 className="text-3xl font-semibold text-left py-5 mb-5">Gestion de Cuentas</h1>
   <ButtonAdd to={"/nuevoEstudiante"}>Nuevo alumno</ButtonAdd>
 </div>
+<Input placeholder="Buscar por nombre..." onChange={(e) => setSearchTerm(e.target.value.toLowerCase())} />
 
         <table className="w-2/3 min-w-max table-auto text-left">
        
@@ -77,19 +80,15 @@ function Students() {
           </thead>
           
           <tbody>
-          {students.map(({id, name, lastname, email, career_id }, index) => (
-
-          
-
-
-              <tr key={name} className="even:bg-blueGray-50/50 font-normal">
+            {students.filter(student => student.name.toLowerCase().includes(searchTerm)).map(({ id, name, lastname, email, career_id }) => (
+              <tr key={id} className="even:bg-blueGray-50/50 font-normal">
                 <td className="p-4">{name}</td>
                 <td className="p-4">{lastname}</td>
                 <td className="p-4">{email}</td>
-                <td className="p-4" >{getCareerNameById(career_id)}</td>
-                <td className="p-4" >
-                  <ButtonEdit to={"/editarEstudiante/"+ id}>Editar</ButtonEdit>   
-                  <ButtonDelete onClick={() => deleteAlumno(id)}>Eliminar</ButtonDelete>            
+                <td className="p-4">{getCareerNameById(career_id)}</td>
+                <td className="p-4">
+                  <ButtonEdit to={"/editarEstudiante/" + id}>Editar</ButtonEdit>
+                  <ButtonDelete onClick={() => deleteAlumno(id)}>Eliminar</ButtonDelete>
                 </td>
               </tr>
             ))}

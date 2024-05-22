@@ -15,6 +15,12 @@ import NewBook from "./components/catalog/newBook";
 import EditBook from "./components/catalog/editBook";
 import ViewBook from "./components/catalog/viewBook";
 import Stats from "./components/stats/stats";
+import Users from "./components/users/usuarios";
+import Contact from "./components/users/contacto";
+import ViewDetailsBook from "./components/users/viewDetailsBook";
+import RequestLoan from "./components/users/requestLoan";
+import MyLoans from "./components/users/myLoans";
+
 import "./App.css";
 
 function App() {
@@ -22,7 +28,8 @@ function App() {
     <Router>
       <Fragment>
         <Routes>
-          <Route path="/" element={<Login />} />
+          
+          {/* Rutas administrador */}
           <Route path="/bibliotecarios" element={<Librarians />} />
           <Route path="/nuevoBibliotecario" element={<NewLibrarian />} />
           <Route path="/editarBibliotecario/:id" element={<EditLibrarian />} />
@@ -33,10 +40,18 @@ function App() {
           <Route path="/nuevoLibro" element={<NewBook />} />
           <Route path="/editarLibro/:id" element={<EditBook />} />
           <Route path="/verLibro/:id" element={<ViewBook />} />
-          <Route path="/estadisticas" element={<Stats />} />
+          <Route path="/soporte" element={<Stats />} />
           <Route path="/estudiantes" element={<Students />} />
           <Route path="/nuevoEstudiante" element={<NewStudent />} />
           <Route path="/editarEstudiante/:id" element={<EditStudent />} />
+
+          {/* Rutas publicas */}
+          <Route path="/" element={<Login />} />
+          <Route path="/usuarios" element={<Users />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="/detallesLibro/:id" element={<ViewDetailsBook />} />
+          <Route path="/solicitarPrestamo/:id" element={<RequestLoan />} />
+          <Route path="/mis-prestamos/:id" element={<MyLoans />} />
         </Routes>
       </Fragment>
     </Router>

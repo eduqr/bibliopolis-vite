@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 
 function Sidebar() {
+
+  
   return (
     <Fragment>
       <div className="flex">
@@ -53,13 +55,13 @@ function Sidebar() {
 
           <ul className="mt-2 mb-2">
             <Link
-              to={"/estadisticas"}
+              to={"/soporte"}
               class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
             >
               <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">
                 <i class="material-symbols-outlined">query_stats</i>
               </span>
-              <span class=" text-xl font-medium font">Estadísticas</span>
+              <span class=" text-xl font-medium font">Soporte</span>
             </Link>
           </ul>
 
@@ -72,6 +74,18 @@ function Sidebar() {
                 <i class="material-symbols-outlined">group</i>
               </span>
               <span class=" text-xl font-medium font">Cuentas</span>
+            </Link>
+          </ul>
+
+          <ul className="mt-2 mb-2">
+            <Link
+              to={"/"}
+              class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-bbWhite hover:text-gray-800"
+            >
+              <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-bbWhite">
+                <i class="material-symbols-outlined">logout</i>
+              </span>
+              <span class=" text-xl font-medium font">Cerrar Sesión</span>
             </Link>
           </ul>
         </div>
