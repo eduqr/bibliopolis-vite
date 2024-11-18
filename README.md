@@ -52,7 +52,7 @@ INSERT INTO students (id, name, lastname, email, career_id) VALUES
 ## :warning: Consideraciones
 * Es importante que tengas acceso al correo proporcionado pues ahí es donde se enviará el OTP.
 * El ID (matrícula) del estudiante está conformada por 9 dígitos.
-* Solo se aceptan correos con dominio de `@gmail.com`, `outlook.com` o `@upqroo.edu.mx`.
+* Solo se aceptan correos con dominio `@gmail.com`, `@outlook.com` o `@upqroo.edu.mx`.
 
 ## :question: Soporte
 Si tienes problemas o preguntas, por favor abre un issue en el repositorio.
